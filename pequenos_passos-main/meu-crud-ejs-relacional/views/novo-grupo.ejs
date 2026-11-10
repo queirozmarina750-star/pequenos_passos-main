@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Grupo</title>
+</head>
+<body>
+
+    <h1>Cadastrar Grupo</h1>
+
+    <form action="/grupos/novo" method="POST">
+
+        <label>Nome do Grupo:</label>
+        <input type="text" name="nome_grupo" required>
+
+        <br><br>
+
+        <label>Descrição:</label>
+        <input type="text" name="descricao" required>
+
+        <br><br>
+
+        <button type="submit">Salvar</button>
+
+    </form>
+
+    <a href="/grupos">Voltar</a>
+
+</body>
+</html>

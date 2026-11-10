@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Cliente</title>
+</head>
+<body>
+
+    <h1>Cadastrar Responsável</h1>
+
+    <form action="/clientes/novo" method="POST">
+
+        <label>Nome Completo:</label>
+        <input type="text" name="nome_completo" required>
+
+        <br><br>
+
+        <label>CPF:</label>
+        <input type="text" name="cpf" maxlength="11" required>
+
+        <br><br>
+
+        <label>E-mail:</label>
+        <input type="email" name="email" required>
+
+        <br><br>
+
+        <label>Telefone:</label>
+        <input type="text" name="telefone" required>
+
+        <br><br>
+
+        <label>Grupo de Atendimento:</label>
+
+        <select name="grupo_id" required>
+
+            <option value="">Selecione um grupo</option>
+
+            <% grupos.forEach(grupo => { %>
+
+                <option value="<%= grupo.id %>">
+                    <%= grupo.nome_grupo %>
+                </option>
+
+            <% }) %>
+
+        </select>
+
+        <br><br>
+
+        <button type="submit">Salvar Cliente</button>
+
+    </form>
+
+    <a href="/clientes">Voltar</a>
+
+</body>
+</html>

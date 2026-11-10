@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Cliente</title>
+</head>
+<body>
+
+    <h1>Editar Responsável</h1>
+
+    <form action="/clientes/editar/<%= cliente.id %>" method="POST">
+
+        <label>Nome Completo:</label>
+
+        <input
+            type="text"
+            name="nome_completo"
+            value="<%= cliente.nome_completo %>"
+            required
+        >
+
+        <br><br>
+
+        <label>CPF:</label>
+
+        <input
+            type="text"
+            name="cpf"
+            value="<%= cliente.cpf %>"
+            maxlength="11"
+            required
+        >
+
+        <br><br>
+
+        <label>E-mail:</label>
+
+        <input
+            type="email"
+            name="email"
+            value="<%= cliente.email %>"
+            required
+        >
+
+        <br><br>
+
+        <label>Telefone:</label>
+
+        <input
+            type="text"
+            name="telefone"
+            value="<%= cliente.telefone %>"
+            required
+        >
+
+        <br><br>
+
+        <label>Grupo:</label>
+
+        <select name="grupo_id" required>
+
+            <% grupos.forEach(grupo => { %>
+
+                <option
+                    value="<%= grupo.id %>"
+                    <%= Number(grupo.id) === Number(cliente.grupo_id) ? 'selected' : '' %>
+                >
+                    <%= grupo.nome_grupo %>
+                </option>
+
+            <% }) %>
+
+        </select>
+
+        <br><br>
+
+        <button type="submit">Atualizar Cliente</button>
+
+    </form>
+
+    <a href="/clientes">Voltar</a>
+
+</body>
+</html>

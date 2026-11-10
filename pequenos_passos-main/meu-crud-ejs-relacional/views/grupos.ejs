@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Grupos de Atendimento</title>
+</head>
+<body>
+
+    <h1>Grupos de Atendimento</h1>
+
+    <p>Bem-vindo, <%= usuario.nome %>!</p>
+
+    <a href="/clientes">Voltar para Clientes</a>
+    <a href="/grupos/novo">Cadastrar Grupo</a>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome do Grupo</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% grupos.forEach(grupo => { %>
+                <tr>
+                    <td><%= grupo.id %></td>
+                    <td><%= grupo.nome_grupo %></td>
+                    <td><%= grupo.descricao %></td>
+
+                    <td>
+                        <a href="/grupos/editar/<%= grupo.id %>">
+                            Editar
+                        </a>
+
+                        <a href="/grupos/deletar/<%= grupo.id %>"
+                           onclick="return confirm('Deseja excluir este grupo?')">
+                            Excluir
+                        </a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+</body>
+</html>

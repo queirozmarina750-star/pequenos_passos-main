@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Clientes - Pequenos Passos</title>
+</head>
+<body>
+
+    <h1>Gestão de Clientes</h1>
+
+    <p>Bem-vindo, <%= usuario.nome %>!</p>
+
+    <a href="/clientes/novo">Cadastrar Cliente</a>
+    <a href="/grupos">Gerenciar Grupos</a>
+    <a href="/logout">Sair</a>
+
+    <hr>
+
+    <form action="/clientes" method="GET">
+
+        <input
+            type="text"
+            name="busca"
+            placeholder="Buscar cliente..."
+            value="<%= busca %>"
+        >
+
+        <button type="submit">Buscar</button>
+
+        <a href="/clientes">Limpar</a>
+
+    </form>
+
+    <br>
+
+    <table border="1">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome Completo</th>
+                <th>CPF</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>Grupo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <% if (clientes.length === 0) { %>
+
+                <tr>
+                    <td colspan="7">Nenhum cliente encontrado.</td>
+                </tr>
+
+            <% } else { %>
+
+                <% clientes.forEach(cliente => { %>
+
+                    <tr>
+
+                        <td><%= cliente.id %></td>
+                        <td><%= cliente.nome_completo %></td>
+                        <td><%= cliente.cpf %></td>
+                        <td><%= cliente.email %></td>
+                        <td><%= cliente.telefone %></td>
+
+                        <td>
+                            <%= cliente.nome_grupo || 'Sem grupo' %>
+                        </td>
+
+                        <td>
+                            <a href="/clientes/editar/<%= cliente.id %>">
+                                Editar
+                            </a>
+
+                            <a
+                                href="/clientes/deletar/<%= cliente.id %>"
+                                onclick="return confirm('Deseja excluir este cliente?')"
+                            >
+                                Excluir
+                            </a>
+                        </td>
+
+                    </tr>
+
+                <% }) %>
+
+            <% } %>
+
+        </tbody>
+
+    </table>
+
+</body>
+</html>
